@@ -32,9 +32,10 @@ echo "Deployment started ..."
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
-# Pull the latest version of the app
-git pull origin main
-echo "New changes copied to server !"
+# Reset local changes and pull latest code
+git fetch origin
+git reset --hard origin/main
+echo "Code updated from GitHub!"
 
 # Installing Dependencies
 echo "Installing Dependencies..."

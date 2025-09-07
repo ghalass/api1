@@ -15,8 +15,8 @@ model User {
 }
 
 model Site {
-  id          Int     @id @default(autoincrement())
-  name        String  @unique
+  id          Int    @id @default(autoincrement())
+  name        String @unique
   description String
-  active      Boolean @default(true)
+  // active      Boolean @default(true)
 }

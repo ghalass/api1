@@ -18,6 +18,6 @@ npm install --yes
 
 # Restarting server
 echo "Restarting server"
-pm2 restart node-app
+pm2 restart api1
 
 echo "Deployment Finished!"

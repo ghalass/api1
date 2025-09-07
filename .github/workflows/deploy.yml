@@ -1,0 +1,28 @@
+name: Deploy
+
+# Trigger the workflow on push and
+# pull request events on the master branch
+on:
+  push:
+    branches: ["master", "main"]
+  pull_request:
+    branches: ["master", "main"]
+
+# Authenticate to the the server via ssh
+# and run our deployment script
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      VITE_BASE_URL: "https://jsonplaceholder.typicode.com/todos"
+      VITE_NODE_ENV: "production"
+    steps:
+      - uses: actions/checkout@v3
+      - name: Deploy to Server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          port: ${{ secrets.PORT }}
+          key: ${{ secrets.SSHKEY }}
+          script: "cd projects/api1 && ./.scripts/deploy.sh"

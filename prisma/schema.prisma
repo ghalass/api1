@@ -13,3 +13,10 @@ model User {
   email  String  @unique
   active Boolean @default(true)
 }
+
+model Site {
+  id          Int     @id @default(autoincrement())
+  name        String  @unique
+  description String
+  active      Boolean @default(true)
+}
